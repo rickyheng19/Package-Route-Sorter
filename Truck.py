@@ -4,7 +4,7 @@ from AddressDistanceLoader import distanceToAddress, distanceList, addressList
 from Package import Package
 
 class Truck:
-    def __init__(self, packagesInLoad: list, currentTime):
+    def __init__(self, packagesInLoad: list, currentTime, userTime):
         self.packagesInLoad = packagesInLoad
         self.reciept = packagesInLoad
         self.milesDriven = 0
@@ -12,6 +12,7 @@ class Truck:
         self.currentTime = currentTime
         self.endTime = None
         self.backHomeStatus = False
+        self.userTime = userTime
 
     def startDelivery(self):
         
@@ -19,7 +20,7 @@ class Truck:
         
         for package in self.packagesInLoad:
             package.enrouteTime = self.currentTime
-            package.status = "En route"
+            #package.status = "En route"
 
         #Introductions
         startTime = self.currentTime
@@ -52,17 +53,20 @@ class Truck:
                 if package.getAddress() == self.currentLocation:
                     package.deliveryTime = self.currentTime
                     self.packagesInLoad.remove(package)  # Remove package from not delivered list
+            #if self.currentTime > self.userTime:
+                #break
             
                    
         #Go back home
-        home = addressList[0]
-        backHome = distanceToAddress(self.currentLocation, home)
-        self.currentLocation = home
-        self.milesDriven += backHome
-        self.endTime = self.currentTime + datetime.timedelta(hours=backHome / 18)
-        self.backHomeStatus = True
-         
-        print(f"Total miles driven: {self.milesDriven} miles")
-        print(f"End Time: {self.endTime}")
-        totalTime = self.endTime - startTime
-        print(f"Total Time taken: {totalTime}")
+        if len(self.packagesInLoad) == 0:
+            home = addressList[0]
+            backHome = distanceToAddress(self.currentLocation, home)
+            self.currentLocation = home
+            self.milesDriven += backHome
+            self.endTime = self.currentTime + datetime.timedelta(hours=backHome / 18)
+            self.backHomeStatus = True
+            
+            print(f"Total miles driven: {self.milesDriven} miles")
+            print(f"End Time: {self.endTime}")
+            totalTime = self.endTime - startTime
+            print(f"Total Time taken: {totalTime}")

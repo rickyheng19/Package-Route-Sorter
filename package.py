@@ -38,7 +38,7 @@ class Package:
             pass
         elif self.deliveryTime < userTime:
             self.status = "Delivered"
-        elif self.enrouteTime < userTime:
+        elif self.enrouteTime < userTime and self.deliveryTime > userTime:
             self.status = "En route"
         else:
             self.status = "At Hub"
