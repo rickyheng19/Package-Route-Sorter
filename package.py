@@ -15,7 +15,7 @@ class Package:
         self.enrouteTime = None
         self.deliveryTime = None
 
-    #Print info about package
+    #Print info about package, O(1)
     def packageInfo(self):
         if self.status == "At Hub":
             return f"ID: {self.package_id}, Address: {self.address}, {self.city} {self.state} {self.zip_code}. Deadline: {self.deadline}, Weight: {self.weight}, Status: {self.status} @{self.hubTime}"
@@ -27,12 +27,13 @@ class Package:
 
 
 
-    #Return an address from list of addresses
+    #Return an address from list of addresses, O(n)
     def getAddress(self):
         for row in range(len(addressList)):
             if self.address == addressList[row]:
                 return addressList[row]
-            
+
+    #Update the package status based on time user wants to view, O(1)        
     def updateStatus(self, userTime):
         if self.deliveryTime is None:
             pass
