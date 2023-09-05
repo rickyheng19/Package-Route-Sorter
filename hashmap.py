@@ -10,9 +10,11 @@ class HashMap:
             value = package
             self.add(key, value)
 
+    # returns a hash code, O(1)
     def _hash(self, key):
         return hash(key) % len(self.packageList)
-
+    
+    # adds a key to the hashmap, O(n)
     def add(self, key, value):
         hash_key = self._hash(key)
         bucket = self.buckets[hash_key]
@@ -24,6 +26,7 @@ class HashMap:
 
         bucket.append((key, value))
 
+    # returns a value from a key, O(n)
     def get(self, key):
         hash_key = self._hash(key)
         bucket = self.buckets[hash_key]
@@ -34,6 +37,7 @@ class HashMap:
 
         return print("Package not found")
 
+    # deletes a key and value, O(n)
     def delete(self, key):
         hash_key = self._hash(key)
         bucket = self.buckets[hash_key]
@@ -43,6 +47,7 @@ class HashMap:
                 del bucket[i]
                 return
 
+    # returns all keys and values, O(n^2)
     def get_all_Packages(self):
          for bucket in self.buckets:
             for key, package in bucket:

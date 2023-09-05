@@ -1,11 +1,11 @@
 import csv
 
-#List for addresses
+#List for addresses O(1)
 addressList = []
 
 addressFile = 'WGUPS Address Table.csv'
 
-#Reader for addresses
+#Reader for addresses O(n)
 with open(addressFile, 'r') as addressCSV:
     addressReader = csv.reader(addressCSV)
 
@@ -15,12 +15,12 @@ with open(addressFile, 'r') as addressCSV:
     for row in addressReader:
         addressList.append(row[0])
 
-#List for distances between addresses
+#List for distances between addresses O(1)
 distanceList = []
 
 distanceFile = 'WGUPS Distance Table.csv'
 
-#Reader for distances
+#Reader for distances O(n)
 with open(distanceFile, 'r') as distanceCSV:
     distanceReader = csv.reader(distanceCSV)
 
@@ -30,6 +30,8 @@ with open(distanceFile, 'r') as distanceCSV:
     for row in distanceReader:
         distanceList.append(row)
 
+#Method to determine distance between two addresses. Uses two indexes to get a value in a
+#Triangular array. O(n)
 def distanceToAddress(address1, address2):
     
     indexAddress1 = 0

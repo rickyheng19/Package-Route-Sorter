@@ -1,6 +1,6 @@
 import csv
 from Package import Package
-
+# O(n)
 def packageReader(file):
     #Make new package list
     PackageList = []
@@ -12,7 +12,7 @@ def packageReader(file):
     with open(file_path, 'r') as csvfile:
         csvreader = csv.reader(csvfile)
 
-        # Iterate through each row in the CSV file
+        # Iterate through each row in the CSV file O(n)
         for row in csvreader:
             package_id = row[0]
             address = row[1]

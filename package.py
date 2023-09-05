@@ -24,9 +24,6 @@ class Package:
         elif self.status == "Delivered":
             return f"ID: {self.package_id}, Address: {self.address}, {self.city} {self.state} {self.zip_code}. Deadline: {self.deadline}, Weight: {self.weight}, Status: {self.status} @{self.deliveryTime}"
 
-
-
-
     #Return an address from list of addresses, O(n)
     def getAddress(self):
         for row in range(len(addressList)):

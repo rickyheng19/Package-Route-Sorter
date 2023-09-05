@@ -14,7 +14,7 @@ class Truck:
         self.backHomeStatus = False
         self.userTime = userTime
 
-    #Time complexity of this method is O(n)
+    #Time complexity of this method is O(n^2)
     def startDelivery(self):
         
         #Mark all packages in load enroute time, O(n)
@@ -27,13 +27,15 @@ class Truck:
             unvisited.append(package.getAddress())
 
         # Using nearest neighbor greedy algorithm, we visit the closest location from our current location
-        # Loop through unvisited places as long as it's not empty, O(n)
+        # Loop through unvisited places as long as it's not empty, O(n^2) due to there being another for loop
+        # In the distanceToAddress method which also has a for loop.
         while unvisited:
             min_distance = float('inf')
             nearestStreet = None
 
-            
+            #O(n), but since distanceTo address is also O(n), makes this method O(n^2)
             for address in unvisited:
+                #O(n)
                 distance = distanceToAddress(self.currentLocation, address)
                 if distance < min_distance:
                     min_distance = distance
