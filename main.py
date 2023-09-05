@@ -43,6 +43,10 @@ elif truck2.backHomeStatus == True:
     if truck3.currentTime < userTime: # type: ignore
         truck3.startDelivery()
 
+#Update all packages with status of final delivery time
+for i in range(len(PackageInfo)):
+    PackageInfo[i].updateStatus(userTime)
+
 #Output the total miles driven
 print(f"Total miles of route: {round(truck1.milesDriven + truck2.milesDriven + truck3.milesDriven, 2)} miles")
 

@@ -30,9 +30,9 @@ class HashMap:
 
         for existing_key, value in bucket:
             if existing_key == key:
-                return value.packageInfo()
+                return print(value.packageInfo())
 
-        return "Package not found"
+        return print("Package not found")
 
     def delete(self, key):
         hash_key = self._hash(key)
@@ -46,4 +46,4 @@ class HashMap:
     def get_all_Packages(self):
          for bucket in self.buckets:
             for key, package in bucket:
-                package.packageInfo()
+                print(package.packageInfo())
