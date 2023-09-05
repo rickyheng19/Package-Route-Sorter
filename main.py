@@ -3,7 +3,6 @@
 # Class: C950
 from PackageLoader import packageReader
 from HashMap import HashMap
-from AddressDistanceLoader import distanceList, addressList, distanceToAddress
 from Truck import Truck
 from Package import Package
 import datetime
@@ -25,14 +24,12 @@ truck3 = Truck ([PackageInfo[1], PackageInfo[3], PackageInfo[4], PackageInfo[5],
 
 #Start Truck 1
 if truck1.currentTime < userTime:
-    print("Truck 1:")
     truck1.startDelivery()
 
 #Start truck 2 at this time
 if truck2.currentTime < userTime:
-    print("Truck 2:")
     truck2.startDelivery()
-    #Change package info for package 9:
+    #Change package info for package 9 @10:20am
     PackageInfo[8].address = "410 S State St"
     PackageInfo[8].zip_code = "84111"
 
@@ -40,16 +37,14 @@ if truck2.currentTime < userTime:
 if truck1.backHomeStatus == True:
     truck3.currentTime = truck1.endTime
     if truck3.currentTime < userTime: # type: ignore
-        print("Truck 3:")
         truck3.startDelivery()
 elif truck2.backHomeStatus == True:
     truck3.currentTime = truck2.endTime
     if truck3.currentTime < userTime: # type: ignore
-        print("Truck 3:")
         truck3.startDelivery()
 
 #Output the total miles driven
-print(f"Total miles driven of all trucks: {round(truck1.milesDriven + truck2.milesDriven + truck3.milesDriven, 2)} miles")
+print(f"Total miles of route: {round(truck1.milesDriven + truck2.milesDriven + truck3.milesDriven, 2)} miles")
 
 #Input time to see status of package
 try:

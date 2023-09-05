@@ -21,11 +21,6 @@ class Truck:
         for package in self.packagesInLoad:
             package.enrouteTime = self.currentTime
 
-
-        #Introductions
-        startTime = self.currentTime
-        print(f"Start Time: {startTime}")
-   
         # unvisited is a list of places where we need to drop off packages, O(n)
         unvisited = []
         for package in self.packagesInLoad:
@@ -64,8 +59,3 @@ class Truck:
             self.milesDriven += backHome
             self.endTime = self.currentTime + datetime.timedelta(hours=backHome / 18)
             self.backHomeStatus = True
-            
-            print(f"Total miles driven: {self.milesDriven} miles")
-            print(f"End Time: {self.endTime}")
-            totalTime = self.endTime - startTime
-            print(f"Total Time taken: {totalTime}")
