@@ -18,9 +18,9 @@ print("WGU Parcel Service")
 #Time where route is finished
 userTime = datetime.timedelta(hours=13, minutes=12)
 #Create 3 trucks with packages loaded
-truck1 = Truck ([PackageInfo[0], PackageInfo[12], PackageInfo[13], PackageInfo[14], PackageInfo[15], PackageInfo[19], PackageInfo[28], PackageInfo[29], PackageInfo[30], PackageInfo[33], PackageInfo[36], PackageInfo[39]], datetime.timedelta(hours=8), userTime)
-truck2 = Truck ([PackageInfo[2], PackageInfo[5], PackageInfo[11], PackageInfo[16], PackageInfo[17], PackageInfo[18], PackageInfo[20], PackageInfo[21], PackageInfo[22], PackageInfo[23], PackageInfo[25], PackageInfo[26], PackageInfo[34], PackageInfo[35], PackageInfo[37], PackageInfo[38]], datetime.timedelta(hours=10, minutes=20), userTime)
-truck3 = Truck ([PackageInfo[1], PackageInfo[3], PackageInfo[4], PackageInfo[5], PackageInfo[6], PackageInfo[7], PackageInfo[8], PackageInfo[9], PackageInfo[10], PackageInfo[24], PackageInfo[27], PackageInfo[31], PackageInfo[32]], datetime.timedelta(hours=9, minutes=5), userTime)
+truck1 = Truck ([PackageInfo[0], PackageInfo[12], PackageInfo[13], PackageInfo[14], PackageInfo[15], PackageInfo[19], PackageInfo[28], PackageInfo[29], PackageInfo[30], PackageInfo[33], PackageInfo[36], PackageInfo[39]], datetime.timedelta(hours=8), "Truck 1", userTime)
+truck2 = Truck ([PackageInfo[2], PackageInfo[5], PackageInfo[11], PackageInfo[16], PackageInfo[17], PackageInfo[18], PackageInfo[20], PackageInfo[21], PackageInfo[22], PackageInfo[23], PackageInfo[25], PackageInfo[26], PackageInfo[34], PackageInfo[35], PackageInfo[37], PackageInfo[38]], datetime.timedelta(hours=10, minutes=20), "Truck 2", userTime)
+truck3 = Truck ([PackageInfo[1], PackageInfo[3], PackageInfo[4], PackageInfo[5], PackageInfo[6], PackageInfo[7], PackageInfo[8], PackageInfo[9], PackageInfo[10], PackageInfo[24], PackageInfo[27], PackageInfo[31], PackageInfo[32]], datetime.timedelta(hours=9, minutes=5), "Truck 3", userTime)
 
 #Start Truck 1
 if truck1.currentTime < userTime:
