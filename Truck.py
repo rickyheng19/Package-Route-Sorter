@@ -4,7 +4,7 @@ from AddressDistanceLoader import distanceToAddress, distanceList, addressList
 from Package import Package
 
 class Truck:
-    def __init__(self, packagesInLoad: list, currentTime, userTime):
+    def __init__(self, packagesInLoad: list, currentTime, truckName: str, userTime):
         self.packagesInLoad = packagesInLoad
         self.reciept = packagesInLoad
         self.milesDriven = 0
@@ -12,6 +12,7 @@ class Truck:
         self.currentTime = currentTime
         self.endTime = None
         self.backHomeStatus = False
+        self.truckName = truckName
         self.userTime = userTime
 
     #Time complexity of this method is O(n^2)
@@ -20,6 +21,7 @@ class Truck:
         #Mark all packages in load enroute time, O(n)
         for package in self.packagesInLoad:
             package.enrouteTime = self.currentTime
+            package.truckNum = self.truckName
 
         # unvisited is a list of places where we need to drop off packages, O(n)
         unvisited = []

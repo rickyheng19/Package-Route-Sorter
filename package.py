@@ -14,15 +14,16 @@ class Package:
         self.hubTime = datetime.timedelta(hours=8)
         self.enrouteTime = None
         self.deliveryTime = None
+        self.truckNum = ""
 
     #Print info about package, O(1)
     def packageInfo(self):
         if self.status == "At Hub":
             return f"ID: {self.package_id}, Address: {self.address}, {self.city} {self.state} {self.zip_code}. Deadline: {self.deadline}, Weight: {self.weight}, Status: {self.status} @{self.hubTime}"
         elif self.status == "En route":
-            return f"ID: {self.package_id}, Address: {self.address}, {self.city} {self.state} {self.zip_code}. Deadline: {self.deadline}, Weight: {self.weight}, Status: {self.status} @{self.enrouteTime}"
+            return f"ID: {self.package_id}, Address: {self.address}, {self.city} {self.state} {self.zip_code}. Deadline: {self.deadline}, Weight: {self.weight}, Status: {self.status} @{self.enrouteTime} on {self.truckNum}"
         elif self.status == "Delivered":
-            return f"ID: {self.package_id}, Address: {self.address}, {self.city} {self.state} {self.zip_code}. Deadline: {self.deadline}, Weight: {self.weight}, Status: {self.status} @{self.deliveryTime}"
+            return f"ID: {self.package_id}, Address: {self.address}, {self.city} {self.state} {self.zip_code}. Deadline: {self.deadline}, Weight: {self.weight}, Status: {self.status} @{self.deliveryTime} by {self.truckNum}"
 
     #Return an address from list of addresses, O(n)
     def getAddress(self):
